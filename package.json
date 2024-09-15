@@ -1,0 +1,47 @@
+{
+  "name": "my-dapp",
+  "version": "1.0.0",
+  "description": "A simple dapp",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx src/client/main.ts",
+    "clean": "npm run clean:program",
+    "test": "npm run test:program",
+    "build": "cargo build-bpf --manifest-path=./src/program/Cargo.toml --bpf-out-dir=contract/program",
+    "clean:program": "cargo clean --manifest-path=./src/program/Cargo.toml && rm -rf contract/program",
+    "test:program": "cargo test bpf --mainifest-path=./src/program/Cargo.toml"
+  },
+  "keywords": [
+    "dapp"
+  ],
+  "author": "Lokesh Jha",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/web3.js": "^1.95.3",
+    "@tsconfig/recommended": "^1.0.7",
+    "mz": "^2.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/mz": "^2.7.8",
+    "@types/node": "^22.5.5",
+    "tsx": "^4.19.1"
+  },
+  "type": "module",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
